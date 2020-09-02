@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import {ImportView} from "./ImportView"
+import {Main} from "./Main";
 
 function App() {
 
@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <header className="container container-small">
-        <ImportView/>
+          <Main/>
       </header>
     </div>
   );
