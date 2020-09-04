@@ -1,22 +1,31 @@
 import React from 'react';
-import { Navbar, Nav, Form, Button } from 'react-bootstrap';
 
 export function NavBar () {
     return (
-        <div className='App tc f3'>
-            <Navbar bg='light' expand='lg'>
-                <Navbar.Brand href="7">FINALE 3D</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className='mr-auto'>
-                        <Nav.Link href="/add">Add effect</Nav.Link>
-                        <Nav.Link href="/admin">Admin</Nav.Link>
-                    </Nav>
-                    <Form inline>
-                        <a href="/login"><Button >Login</Button></a>
-                    </Form>
-                </Navbar.Collapse>
-            </Navbar>
+        <div>
+            <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+                <a className="navbar-brand" href="/">FINALE 3D</a>
+
+                <ul className="navbar-nav">
+                    <li className="nav-item active">
+                        <a className="nav-link" href="/add">Add Effects</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/todo">Effect Status</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/todo">Admin Effects(Admi)</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link disabled" href="/disabled">Disabled</a>
+                    </li>
+                    <form className="form-inline" action="/login">
+                        <button className="btn btn-success" type="submit">Login</button>
+                    </form>
+                </ul>
+            </nav>
+
+
         </div>
     );
 }
