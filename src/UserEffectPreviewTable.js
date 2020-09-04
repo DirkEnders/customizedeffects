@@ -9,11 +9,11 @@ export function UserEffectPreviewTable(props) {
 
     useEffect(() => {
 
-        var newParts = props.effectArr.map(effect => effect.partNumber)
-        var cleanarr = finaleEffectsArr.filter(effect => !newParts.includes(effect.partNumber))
+        let newParts = props.effectArr.map(effect => effect.partNumber)
+        let cleanarr = finaleEffectsArr.filter(effect => !newParts.includes(effect.partNumber))
 
         setFinaleEffects(props.effectArr.concat(cleanarr))
-    }, [props.effectArr]);
+    }, []);
 
 
 
@@ -24,7 +24,6 @@ export function UserEffectPreviewTable(props) {
 
 
     const  renderTableData = () =>{
-        //return finaleEffectsArr && finaleEffectsArr.map(({partNumber,description,ftype,operation}) =>{
         return finaleEffectsArr && finaleEffectsArr.map((effect) =>{
             return (
                 <UserEffectPreviewRow {...effect} deletefunc={() => deleteEffectRow(effect.partNumber) } />

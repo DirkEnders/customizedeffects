@@ -1,6 +1,8 @@
 import React from 'react';
 
-export function NavBar () {
+export function NavBar(props) {
+
+
     return (
         <div>
             <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -11,18 +13,26 @@ export function NavBar () {
                         <a className="nav-link" href="/add">Add Effects</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/todo">Effect Status</a>
+                        <a className={props.isUserLoggedIn ? "nav-link" : "nav-link disabled"} href="/todo">Effect
+                            Status</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="/todo">Admin Effects(Admi)</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link disabled" href="/disabled">Disabled</a>
+                        <a className={props.isUserLoggedIn ? "nav-link" : "nav-link disabled"} href="/todo">Admin
+                            Effects(Admi)</a>
                     </li>
                     <form className="form-inline" action="/login">
-                        <button className="btn btn-success" type="submit">Login</button>
+                        <button className="btn btn-success"
+                                type="submit">{props.isUserLoggedIn ? "Logout" : "Login"}</button>
                     </form>
                 </ul>
+
+
+
+
+
+
+
+
             </nav>
 
 
