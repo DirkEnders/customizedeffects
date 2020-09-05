@@ -15,10 +15,13 @@ export function ImportView() {
         setStep(1)
     }
 
+    const sentEffectsToFinale = () => {
+        localStorage.setItem('items', JSON.stringify(effekte))
+        setStep(3)
+    }
+
     const handlePaste = (e) => {
-        console.log("in parse")
         if (e === undefined) return
-        console.log("Parse Text in funk ",e.clipboardData.getData('Text'))
         var effectText = e.clipboardData.getData('Text')
         if (effectText.length > 0) {
             var lines           = effectText.split("\n")
@@ -47,6 +50,7 @@ export function ImportView() {
                     effectObj[headerFieldsArr[headerIndex]] = effectValuesArr[headerIndex]
                     if (headerFieldsArr[headerIndex] === "partNumber") {
                         effectObj["key"]=effectValuesArr[headerIndex]
+                        effectObj["status"]="new - unchecked"
                     }
                 }
 
@@ -65,23 +69,43 @@ export function ImportView() {
     }
 
 
-    return (
-        <div>
-            <ImportMenue step={step} callbackButtonOne={resetToStepOne}/>
-            {step === 1 ?
+
+        if ( step === 1)  {
+            return (
+            <div>
+                <ImportMenue step={step} callbackButtonOne={resetToStepOne}/>
                 <div>
-                    <PasteBlock callbackHandlePaste={handlePaste}/>
-                </div> :
-                <div>
-                    <PreviewBlock effectArr ={effekte}/>
+                        <PasteBlock callbackHandlePaste={handlePaste}/>
                 </div>
-            }
-            {warning === true ?
+            </div>
+            )}
+
+        if ( step === 2) {
+            return (
                 <div>
-                    The content that was patse seems not to be from 3D effect
-                </div> :
-                null
-            }
-        </div>
-    )
+                    <ImportMenue step={step} callbackButtonOne={resetToStepOne} callbackButtonThree={sentEffectsToFinale}/>
+                    <div>
+                        <PreviewBlock effectArr ={effekte}/>
+                    </div>
+                    {warning === true ?
+                    <div>
+                    The content that was pasted seems not to be from 3D effect
+                    </div> :
+                    null
+                    }
+                </div>
+            )}
+
+
+    if ( step === 3) {
+        return (
+            <div>
+                <ImportMenue step={step}  callbackButtonOne={resetToStepOne}/>
+
+                <span>
+                    Your Effects were sent to FINALE 3D for investigation !
+                </span>
+            </div>
+        )}
+
 }

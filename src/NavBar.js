@@ -9,16 +9,16 @@ export function NavBar(props) {
                 <a className="navbar-brand" href="/">FINALE 3D</a>
 
                 <ul className="navbar-nav">
-                    <li className="nav-item active">
-                        <a className="nav-link" href="/add">Add Effects</a>
+                    <li className={props.isUserLoggedIn ? "nav-item active" : "nav-item"}>
+                        <a className={props.isUserLoggedIn ? "nav-link" : "nav-link disabled"} href="/add">Add Effects</a>
                     </li>
-                    <li className="nav-item">
-                        <a className={props.isUserLoggedIn ? "nav-link" : "nav-link disabled"} href="/todo">Effect
+                    <li className={props.isUserLoggedIn ? "nav-item active" : "nav-item"}>
+                        <a className={props.isUserLoggedIn ? "nav-link" : "nav-link disabled"} href="/userstatus">Effect
                             Status</a>
                     </li>
-                    <li className="nav-item">
+                    <li className={props.isUserLoggedIn ? "nav-item active" : "nav-item"}>
                         <a className={props.isUserLoggedIn ? "nav-link" : "nav-link disabled"} href="/todo">Admin
-                            Effects(Admi)</a>
+                            Effects(Admin)</a>
                     </li>
                     <form className="form-inline" action="/login">
                         <button className="btn btn-success"

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {LoginView} from "./LoginView";
+import {UserStatusView} from "./UserStatusView"
 import {NavBar} from'./NavBar'
 import {
     BrowserRouter as Router,
@@ -25,6 +26,7 @@ export function Main() {
     return (
         <div>
             <NavBar isUserLoggedIn={isUserLoggedIn}/>
+            <span> </span>
             <Router>
                 <Switch>
                     {isUserLoggedIn ?
@@ -39,6 +41,10 @@ export function Main() {
                     <Route path="/add">
                         <ImportView/>
                     </Route>
+                    <Route path="/userstatus">
+                        <UserStatusView/>
+                    </Route>
+
                     <Route path="/admin">
                         <p>On my to do lis</p>
                     </Route>
