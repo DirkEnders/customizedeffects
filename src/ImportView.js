@@ -4,14 +4,13 @@ import {ImportMenue} from "./ImportMenue"
 import {PasteBlock} from "./PasteBlock"
 import {PreviewBlock} from "./PreviewBlock"
 
-export function ImportView() {
+export function ImportView(props) {
 
     const [step, setStep] = useState(1)
     const [effekte, setEffects] = useState([])
     const [warning, setWarning] = useState(false)
 
     const resetToStepOne = () => {
-        console.log("reset ")
         setStep(1)
     }
 
@@ -45,12 +44,13 @@ export function ImportView() {
                     if (headerFieldsArr[headerIndex].indexOf("#") !== -1 ) continue
                     if ("insertButton used quota qoh remainingQuota remainingQoh remainingAvailable available stdLocation".indexOf(headerFieldsArr[headerIndex]) !== -1 )continue
 
-                    console.log("Feld "+headerFieldsArr[headerIndex])
+                    //console.log("Feld "+headerFieldsArr[headerIndex])
 
                     effectObj[headerFieldsArr[headerIndex]] = effectValuesArr[headerIndex]
                     if (headerFieldsArr[headerIndex] === "partNumber") {
                         effectObj["key"]=effectValuesArr[headerIndex]
                         effectObj["status"]="new - unchecked"
+                        effectObj["partNumber"]=props.userId+"-"+effectValuesArr[headerIndex]
                     }
                 }
 
@@ -59,16 +59,12 @@ export function ImportView() {
                 }
             }
 
-            //setEffectText("")
             setEffects(effectArr)
-            //this.setState({...this.state, effects: effectArr, effectText: ""})
 
         }
 
         setStep(2)
     }
-
-
 
         if ( step === 1)  {
             return (

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {LoginView} from "./LoginView";
 import {UserStatusView} from "./UserStatusView"
+import {AdminView} from "./AdminView"
 import {NavBar} from'./NavBar'
 import {
     BrowserRouter as Router,
@@ -16,7 +17,8 @@ export function Main() {
 
     console.log("In Main again")
 
-    const [isUserLoggedIn, setUserIsLoggedOn] = useState(false)
+    const [isUserLoggedIn, setUserIsLoggedOn]   = useState(false)
+    const [userId,setUserId]                    = useState("001")
 
     const handleLoginSubmit = (event) => {
         event.preventDefault()
@@ -39,14 +41,14 @@ export function Main() {
                         <div>Hello</div>
                     </Route>
                     <Route path="/add">
-                        <ImportView/>
+                        <ImportView userId={userId}/>
                     </Route>
                     <Route path="/userstatus">
                         <UserStatusView/>
                     </Route>
 
                     <Route path="/admin">
-                        <p>On my to do lis</p>
+                        <AdminView/>
                     </Route>
                 </Switch>
             </Router>

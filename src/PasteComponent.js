@@ -8,7 +8,8 @@ export function PasteComponent(props){
     var sectionStyle = {
         width: "100%",
         height: "400px",
-        backgroundImage: `url(${pastehere})`
+        backgroundImage: `url(${pastehere})`,
+        backgroundRepeat: "no-repeat"
     };
 
     return (
